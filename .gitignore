@@ -2,3 +2,4 @@
 *.obj
 *.gcode
 .openscad_history
+*.zip
