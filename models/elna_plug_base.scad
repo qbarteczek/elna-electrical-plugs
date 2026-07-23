@@ -31,8 +31,12 @@ cable_dia = 6.0;
 // Rozstaw między osiami pinów
 pin_spacing = 8.5; 
 // Wymiary otworów na wsuwki
+// Wymiary otworów na wsuwki
 pin_slot_width = 1.5 + print_tolerance;
 pin_slot_length = 5.5 + print_tolerance;
+
+// Orientacja środkowego pinu (oryginał Elna = "horizontal", modyfikacja = "vertical")
+middle_pin_orientation = "vertical"; // ["horizontal", "vertical"]
 
 module draw_imported_reference() {
     if (show_reference_stl) {
@@ -73,12 +77,12 @@ module cable_strain_relief() {
 module pin_slots() {
     // 2 skrajne piny ustawione pionowo, środkowy pin poziomo (Supermatic)
     for(x = [-pin_spacing, 0, pin_spacing]) {
-        if (x == 0) {
-            // Środkowy pin poziomo (zamienione wymiary)
+        if (x == 0 && middle_pin_orientation == "horizontal") {
+            // Środkowy pin poziomo (oryginalna wtyczka Elna Supermatic)
             translate([x, plug_length/2 - 5, 0])
                 cube([pin_slot_length, pin_slot_width, plug_height + 2], center=true);
         } else {
-            // Skrajne piny pionowo
+            // Skrajne piny (i środkowy, jeśli ustawiony na vertical) pionowo
             translate([x, plug_length/2 - 5, 0])
                 cube([pin_slot_width, pin_slot_length, plug_height + 2], center=true);
         }
