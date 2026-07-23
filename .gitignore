@@ -1,0 +1,4 @@
+*.stl
+*.obj
+*.gcode
+.openscad_history
