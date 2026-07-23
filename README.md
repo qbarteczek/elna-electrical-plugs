@@ -2,7 +2,7 @@
 
 <p align="center">
   <img src="images/IMG_2005.JPG" height="300" />
-  <img src="images/ELNA_SUPERMATIC_PLUG.png" height="300" />
+  <img src="images/preview_modified.png" height="300" />
 </p>
 **⚠️ Ważna Informacja:** Ten projekt jest wyłącznie **modyfikacją (remixem)** istniejącego już projektu i nie jest moim bezpośrednim autorskim dziełem. Pierwotnym autorem pomysłu i głównego modelu wtyczki jest użytkownik **bamckin** z serwisu Thingiverse. 
 Oryginalny projekt znajduje się pod adresem: [Elna Sewing Machine Power Plug (Thing: 7199180)](https://www.thingiverse.com/thing:7199180).
