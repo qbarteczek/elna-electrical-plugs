@@ -41,6 +41,11 @@ module elna_plug_option1() {
         color("darkred")
         translate([hole_x, hole_y - 12, 4])
             cube([connector_width, connector_length, 20], center=true);
+            
+        // Gwarancja przejścia na przewód elektryczny (kanał łączący wnękę z główną komorą STL)
+        color("blue")
+        translate([hole_x, hole_y - 25, 4])
+            cube([4, 20, 15], center=true);
     }
 }
 
