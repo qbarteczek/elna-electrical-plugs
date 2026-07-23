@@ -11,9 +11,16 @@ Wszystkie zdjęcia poglądowe w folderze `images/` oraz pierwotny plik STL w fol
 
 ---
 
-Parametryczne modele OpenSCAD wtyczek elektrycznych zasilania dla klasycznych maszyn Elna. Model jest parametryczny - można wybrać m.in. orientację środkowego pinu.
+Parametryczne modele OpenSCAD wtyczek elektrycznych zasilania dla klasycznych maszyn Elna.
 
-Gotowe do druku wyeksportowane STLe znajdziesz w folderze `stls/exports/`.
+## Dostępne wersje wtyczek
+
+W tym repozytorium znajdziesz dwa nowo przygotowane warianty (znajdujące się w folderze `models/`), które realizują modyfikację ułożenia pinów (3 piny pionowe):
+
+1. **`elna_plug_option1_stl_mod.scad`** – Modyfikacja operująca bezpośrednio na oryginalnym pliku STL. Wymaga skalibrowania suwaków `hole_x` i `hole_y` w OpenSCAD. Zapewnia najwierniejsze odwzorowanie kształtu.
+2. **`elna_plug_option2_parametric.scad`** – Wersja narysowana od zera parametrycznie w OpenSCAD na bazie obrysu.
+
+Gotowe do druku wyeksportowane STLe obu wariantów znajdziesz w folderze `stls/exports/`. Wygenerowane grafiki poglądowe z programu OpenSCAD znajdują się w nowym katalogu `renders/`.
 
 ## Wymagania dotyczące druku 3D
 Z uwagi na to, że element ten ma bezpośredni kontakt z przewodami pod napięciem (230V) oraz elementami mosiężnymi mogącymi się nagrzewać:

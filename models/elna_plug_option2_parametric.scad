@@ -65,9 +65,27 @@ module pin_slots() {
     }
 }
 
+module inner_cavity() {
+    // Główna komora wewnątrz wtyczki na ułożenie przewodów
+    hull() {
+        // Przednia część komory (blisko wnęk na złącza)
+        translate([plug_width/2 - corner_radius - 3, plug_length/2 - 25, 0]) 
+            cylinder(r=corner_radius, h=plug_height - 6, center=true, $fn=30);
+        translate([-plug_width/2 + corner_radius + 3, plug_length/2 - 25, 0]) 
+            cylinder(r=corner_radius, h=plug_height - 6, center=true, $fn=30);
+            
+        // Tylna część komory (zbliża się do wlotu kabla)
+        translate([plug_width/2 - corner_radius - back_taper - 3, -plug_length/2 + 25, 0]) 
+            cylinder(r=corner_radius, h=plug_height - 6, center=true, $fn=30);
+        translate([-plug_width/2 + corner_radius + back_taper + 3, -plug_length/2 + 25, 0]) 
+            cylinder(r=corner_radius, h=plug_height - 6, center=true, $fn=30);
+    }
+}
+
 module elna_plug_option2() {
     difference() {
         outer_shell();
+        inner_cavity();
         screw_holes();
         cable_strain_relief();
         pin_slots();
