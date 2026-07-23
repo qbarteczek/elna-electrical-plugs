@@ -11,16 +11,22 @@ Wszystkie zdjęcia poglądowe w folderze `images/` oraz pierwotny plik STL w fol
 
 ---
 
-Parametryczne modele OpenSCAD wtyczek elektrycznych zasilania dla klasycznych maszyn Elna.
+Modyfikacja 3D wtyczki zasilającej do maszyn do szycia Elna (seria SP / Star / Supermatic). 
 
-## Dostępne wersje wtyczek
+Projekt jest modyfikacją (remixem) bazowym oryginalnego modelu [Thingiverse 7199180](https://www.thingiverse.com/thing:7199180) autorstwa **bamckin**.
 
-W tym repozytorium znajdziesz dwa nowo przygotowane warianty (znajdujące się w folderze `models/`), które realizują modyfikację ułożenia pinów (3 piny pionowe):
+## Specyfikacja Modyfikacji
+* **Układ pinów:** Wszystkie **3 piny ustawione pionowo** (w oryginalnym modelu środkowy pin był poziomy).
+* **Rozstaw osi pinów:** Dokładnie **12.7 mm** (pół cala) pomiędzy osiami sąsiednich pinów.
+* **Komory wewnętrzne:** Wyprofilowane pod wymiary standardowych mosiężnych żeńskich końcówek konektorowych (wszystkie 3 komory pionowe o wymiarach 6.0 mm × 14.0 mm).
+* **Udrożnienie kablowe:** Zachowana obszerna komora na ułożenie przewodów oraz odgiętka z ząbkami zaciskającymi na tyłach wtyczki.
 
-1. **`elna_plug_option1_stl_mod.scad`** – Modyfikacja operująca bezpośrednio na oryginalnym pliku STL. Wymaga skalibrowania suwaków `hole_x` i `hole_y` w OpenSCAD. Zapewnia najwierniejsze odwzorowanie kształtu.
-2. **`elna_plug_option2_parametric.scad`** – Wersja narysowana od zera parametrycznie w OpenSCAD na bazie obrysu.
-
-Gotowe do druku wyeksportowane STLe obu wariantów znajdziesz w folderze `stls/exports/`. Wygenerowane grafiki poglądowe z programu OpenSCAD znajdują się w nowym katalogu `renders/`.
+## Pliki w Repozytorium
+* `models/elna_plug_modified.scad` – Główny kod OpenSCAD dokonujący precyzyjnej modyfikacji na obrysie STL.
+* `stls/exports/elna_plug_modified_bottom.stl` – Gotowa dolna połówka wtyczki do druku 3D.
+* `stls/exports/elna_plug_modified_top.stl` – Gotowa górna połówka wtyczki do druku 3D.
+* `renders/` – Wyrenderowane grafiki poglądowe z programu OpenSCAD.
+* `tools/` – Skrypty Python wykorzystane do precyzyjnej analizy geometrii siatki STL.
 
 ## Wymagania dotyczące druku 3D
 Z uwagi na to, że element ten ma bezpośredni kontakt z przewodami pod napięciem (230V) oraz elementami mosiężnymi mogącymi się nagrzewać:
