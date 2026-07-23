@@ -43,11 +43,14 @@ module elna_plug_modified() {
 
 module render_split() {
     if (render_part == "both") {
+        // Podgląd obu złożonych połówek wtyczki
         elna_plug_modified();
+        translate([0, 0, 15.88]) mirror([0, 0, 1]) elna_plug_modified();
     } else if (render_part == "bottom") {
+        // Dolna połówka
         elna_plug_modified();
     } else if (render_part == "top") {
-        // Górna symetryczna połówka (odbicie lustrzane płasko do druku)
+        // Górna połówka zorientowana płasko do druku 3D (bez podpór)
         rotate([180, 0, 0]) translate([0, 0, -7.94]) elna_plug_modified();
     }
 }
