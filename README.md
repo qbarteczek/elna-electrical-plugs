@@ -1,5 +1,12 @@
 # Elna Sewing Machines - 3D Printable Electrical Plugs
 
+**⚠️ Ważna Informacja:** Ten projekt jest wyłącznie **modyfikacją (remixem)** istniejącego już projektu i nie jest moim bezpośrednim autorskim dziełem. Pierwotnym autorem pomysłu i głównego modelu wtyczki jest użytkownik **bamckin** z serwisu Thingiverse. 
+Oryginalny projekt znajduje się pod adresem: [Elna Sewing Machine Power Plug (Thing: 7199180)](https://www.thingiverse.com/thing:7199180).
+
+Wszystkie zdjęcia poglądowe w folderze `images/` oraz pierwotny plik STL w folderze `stls/` nie należą do mnie. Zostały one dołączone do tego repozytorium wyłącznie w celach referencyjnych i edukacyjnych, jako punkt wyjścia dla opracowanych tu modyfikacji.
+
+---
+
 Parametryczne modele OpenSCAD wtyczek elektrycznych zasilania oraz pedałów nożnych dla klasycznych maszyn Elna (np. Supermatic, Lotus, SU).
 
 ## Wymagania dotyczące druku 3D
@@ -9,11 +16,8 @@ Z uwagi na to, że element ten ma bezpośredni kontakt z przewodami pod napięci
 - Należy zastosować wysokie wypełnienie (np. 50-100% z 4 obrysami), aby wtyczka nie pękła pod naciskiem kabla.
 
 ## Montaż Elementów Stykowych
-Modele służą wyłącznie jako obudowy. Aby zbudować wtyczkę, należy użyć rurek z mosiądzu lub uniwersalnych wsuwek konektorowych 2.8mm / 4.8mm doaciśniętych na zarobionych przewodach.
+Modele służą wyłącznie jako obudowy. Aby zbudować wtyczkę, należy użyć rurek z mosiądzu lub uniwersalnych wsuwek konektorowych 2.8mm / 4.8mm dociśniętych na zarobionych przewodach.
 Po włożeniu zaciśniętych przewodów w odpowiednie kanały wydruku, obie połówki obudowy należy skręcić śrubą M3.
 
-## Prawa Autorskie i Pochodzenie Plików
-Zdjęcia poglądowe znajdujące się w folderze `images/` (oraz referencyjny plik STL w folderze `stls/`) **nie są mojego autorstwa**. Pochodzą one z oryginalnego projektu stworzonego przez użytkownika **bamckin** na platformie Thingiverse: [Elna Sewing Machine Power Plug (Thing: 7199180)](https://www.thingiverse.com/thing:7199180). Zostały one dołączone wyłącznie w celach poglądowych i edukacyjnych.
-
 ## Licencja
-Projekt udostępniany na licencji **GPL-3.0**. Zobacz plik [LICENSE](LICENSE).
+Projekt udostępniany na licencji **GPL-3.0** w zgodzie z zasadami open-source dla projektów pochodnych. Zobacz plik [LICENSE](LICENSE).
