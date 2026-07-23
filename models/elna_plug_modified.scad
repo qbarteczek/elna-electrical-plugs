@@ -1,7 +1,9 @@
 // Elna Sewing Machine Plug - 3 Vertical Pins Modification
 // Based on exact geometric measurements of original Thingiverse model 7199180 by bamckin
 
-render_part = "bottom"; // [top, bottom, both]
+/* [Konfiguracja Renderowania] */
+// Wybierz część do wyrenderowania w OpenSCAD
+render_part = "bottom"; // [bottom:Dolna Połówka do druku, top:Górna Połówka do druku, both:Obie Złożone (Podgląd wtyczki)]
 
 // === DOKŁADNE PARAMETRY GEOMETRYCZNE ===
 // Srodek osi X dla pliku STL: 32.27 mm
@@ -15,14 +17,13 @@ conn_w = 6.0;         // szerokość komory na wsuwkę mosiężną
 conn_l = 14.0;        // długość komory na wsuwkę mosiężną
 conn_h = 6.5;         // głębokość komory na wsuwkę
 
-module elna_plug_modified() {
+module elna_plug_raw() {
     difference() {
         union() {
             // 1. Oryginalna obudowa z pliku STL
             import("../stls/ELNA_SUPERMATIC_PLUG.stl");
             
             // 2. Zalanie (wypełnienie) starej poziomej komory i otworu środkowego
-            // Stara komora miała szerokość 12.5mm
             translate([stl_center_x, front_y - 10, 3.5])
                 cube([12.6, 20.0, 7.5], center=true);
         }
@@ -41,17 +42,23 @@ module elna_plug_modified() {
     }
 }
 
+// Główny wycentrowany model (wycentrowany w osi X i Y wokół [0,0,0])
+module elna_plug_centered() {
+    translate([-stl_center_x, 13.0, 0])
+        elna_plug_raw();
+}
+
 module render_split() {
     if (render_part == "both") {
-        // Podgląd obu złożonych połówek wtyczki
-        elna_plug_modified();
-        translate([0, 0, 15.88]) mirror([0, 0, 1]) elna_plug_modified();
+        // Podgląd obu złączonych połówek wtyczki w osi 0
+        elna_plug_centered();
+        translate([0, 0, 15.88]) mirror([0, 0, 1]) elna_plug_centered();
     } else if (render_part == "bottom") {
-        // Dolna połówka
-        elna_plug_modified();
+        // Dolna połówka wycentrowana
+        elna_plug_centered();
     } else if (render_part == "top") {
         // Górna połówka zorientowana płasko do druku 3D (bez podpór)
-        rotate([180, 0, 0]) translate([0, 0, -7.94]) elna_plug_modified();
+        rotate([180, 0, 0]) translate([0, 0, -7.94]) elna_plug_centered();
     }
 }
 
