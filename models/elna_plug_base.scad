@@ -27,6 +27,13 @@ m3_nut_thickness = 2.4 + print_tolerance;
 // Wymiary odgiętki/blokady kabla
 cable_dia = 6.0;
 
+// --- Konfiguracja Pinów ---
+// Rozstaw między osiami pinów
+pin_spacing = 8.5; 
+// Wymiary otworów na wsuwki
+pin_slot_width = 1.5 + print_tolerance;
+pin_slot_length = 5.5 + print_tolerance;
+
 module draw_imported_reference() {
     if (show_reference_stl) {
         // Transparentny model w ramach referencji
@@ -63,6 +70,19 @@ module cable_strain_relief() {
     }
 }
 
+module pin_slots() {
+    // 3 piny w rzędzie, wszystkie ustawione w tej samej orientacji
+    for(x = [-pin_spacing, 0, pin_spacing]) {
+        // Główny otwór wylotowy na pin
+        translate([x, plug_length/2 - 5, 0])
+            cube([pin_slot_width, pin_slot_length, plug_height + 2], center=true);
+            
+        // Rozszerzenie wewnętrzne na wsuwkę konektorową z zaciśniętym kablem
+        translate([x, plug_length/2 - 15, 0])
+            cube([6.0, 15.0, plug_height - 4], center=true);
+    }
+}
+
 module elna_plug_base() {
     difference() {
         // Główny blok obudowy
@@ -74,9 +94,8 @@ module elna_plug_base() {
         // Otwory i zabezpieczenie na kabel
         cable_strain_relief();
         
-        // Przestrzeń wewnętrzna na piny mosiężne i złączki 
-        // (Wymaga dalszego dopracowania względem STL)
-        translate([0, 10, 0]) cube([plug_width - 8, plug_length - 20, plug_height - 4], center=true);
+        // Kanały na mosiężne piny (zmodyfikowane: wszystkie 3 piny ustawione pionowo)
+        pin_slots();
     }
 }
 
