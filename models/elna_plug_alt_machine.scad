@@ -71,17 +71,11 @@ module cable_strain_relief() {
 }
 
 module pin_slots() {
-    // 2 skrajne piny ustawione pionowo, środkowy pin poziomo (Supermatic)
+    // 3 piny w rzędzie, wszystkie ustawione w tej samej orientacji
     for(x = [-pin_spacing, 0, pin_spacing]) {
-        if (x == 0) {
-            // Środkowy pin poziomo (zamienione wymiary)
-            translate([x, plug_length/2 - 5, 0])
-                cube([pin_slot_length, pin_slot_width, plug_height + 2], center=true);
-        } else {
-            // Skrajne piny pionowo
-            translate([x, plug_length/2 - 5, 0])
-                cube([pin_slot_width, pin_slot_length, plug_height + 2], center=true);
-        }
+        // Główny otwór wylotowy na pin
+        translate([x, plug_length/2 - 5, 0])
+            cube([pin_slot_width, pin_slot_length, plug_height + 2], center=true);
             
         // Rozszerzenie wewnętrzne na wsuwkę konektorową z zaciśniętym kablem
         translate([x, plug_length/2 - 15, 0])
