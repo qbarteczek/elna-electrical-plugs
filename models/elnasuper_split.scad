@@ -24,8 +24,13 @@ screw_1_x = 0.0;
 screw_2_z = 19.0;
 screw_2_x = 0.0;
 
+include <widen_slots.scad>
+
 module original_plug() {
-    import("../stls/elnaplug-elnasuperv1.5.stl");
+    difference() {
+        filled_plug();
+        widened_slots();
+    }
 }
 
 module screw_holes() {

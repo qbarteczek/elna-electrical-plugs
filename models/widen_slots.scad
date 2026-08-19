@@ -21,13 +21,13 @@ module filled_plug() {
 }
 
 module widened_slots() {
-    // Nowe, idealnie prostokątne otwory w prawidłowych osiach
-    translate([-0.19, 0.03, 11.0]) cube([3.4, 6.9, 30.0], center=true);
-    translate([-10.69, 0.03, 11.0]) cube([3.4, 6.9, 30.0], center=true);
-    translate([10.31, 0.03, 11.0]) cube([3.4, 6.9, 30.0], center=true);
+    // Nowe, idealnie prostokątne otwory w prawidłowych osiach (co 12.7 mm)
+    translate([-0.19, 0.03, 11.0]) cube([3.4, 6.9, 30.0], center=true); // Środek
+    translate([-12.89, 0.03, 11.0]) cube([3.4, 6.9, 30.0], center=true); // Lewy (-0.19 - 12.7)
+    translate([12.51, 0.03, 11.0]) cube([3.4, 6.9, 30.0], center=true); // Prawy (-0.19 + 12.7)
 }
 
-difference() {
-    filled_plug();
-    widened_slots();
-}
+// difference() {
+//     filled_plug();
+//     widened_slots();
+// }
