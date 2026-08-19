@@ -24,7 +24,7 @@ screw_1_x = 0.0;
 screw_2_z = 19.0;
 screw_2_x = 0.0;
 
-include <widen_slots.scad>
+use <widen_slots.scad>
 
 module modified_plug() {
     difference() {
