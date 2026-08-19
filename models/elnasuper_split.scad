@@ -26,7 +26,7 @@ screw_2_x = 0.0;
 
 include <widen_slots.scad>
 
-module original_plug() {
+module modified_plug() {
     difference() {
         filled_plug();
         widened_slots();
@@ -56,7 +56,7 @@ module screw_holes() {
 
 module plug_with_screws() {
     difference() {
-        original_plug();
+        modified_plug();
         screw_holes();
     }
 }
