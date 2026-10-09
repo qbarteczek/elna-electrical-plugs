@@ -1,42 +1,73 @@
-# Elna Sewing Machines - 3D Printable Electrical Plugs
+# Elna sewing machine plugs — 3D-printable remixes
 
-<p align="center">
-  <img src="images/IMG_2005.JPG" height="300" />
-  <img src="images/preview_modified.png" height="300" />
-</p>
-**⚠️ Important Notice (Ważna Informacja):** This project is exclusively a **modification (remix)** of an existing project and is not my direct original work. The original author of the idea and the main plug model is the user **bamckin** from Thingiverse. 
-The original project can be found at: [Elna Sewing Machine Power Plug (Thing: 7199180)](https://www.thingiverse.com/thing:7199180).
+Small dimensional fixes to two existing Thingiverse models of Elna sewing machine plugs.
+Neither model is my original design; see [Attribution and licence](#attribution-and-licence).
 
-All reference photos in the `images/` folder and the original STL file in the `stls/` folder do not belong to me. They have been included in this repository solely for reference and educational purposes, as a starting point for the modifications developed here.
+*PL: Drobne poprawki wymiarowe dwóch istniejących modeli wtyczek do maszyn Elna (zasilająca i pedału).
+Oba modele bazowe pochodzą z Thingiverse i nie są mojego autorstwa.*
 
----
+> **Mains voltage.** These housings carry 230 V. Do not print them in PLA; use PETG, ABS, ASA or a
+> PC blend, with high infill. You build and use them at your own risk.
 
-A 3D modification of the power plug for Elna sewing machines (SP / Star / Supermatic series). 
+## 1. Power plug (Elna SP / Star series)
 
-This project is a modification (remix) based on the original model [Thingiverse 7199180](https://www.thingiverse.com/thing:7199180) by **bamckin**.
+Base model: [Thingiverse 7199180](https://www.thingiverse.com/thing:7199180) by bamckin.
+Two-part housing for the 32 × 13 mm socket.
 
-## Modification Specifications (Specyfikacja Modyfikacji)
-* **Pin Layout:** All **3 pins are set vertically** (in the original model, the middle pin was horizontal).
-* **Pin Axis Spacing:** Exactly **12.7 mm** (half an inch) between the axes of adjacent pins.
-* **Internal Chambers:** Profiled to the dimensions of standard brass female connector terminals (all 3 vertical chambers measuring 6.0 mm × 14.0 mm).
-* **Cable Routing:** Maintained a spacious chamber for cable routing and a strain relief with clamping teeth at the back of the plug.
+In the original mesh the middle notch on the front edge of both halves is about 5.0 mm wide, while
+the two outer notches are about 3.4 mm. `final_plug.scad` replaces the middle notch with a copy of
+the outer one, separately on each half, and leaves the rest of the geometry untouched.
 
-## Repository Files (Pliki w Repozytorium)
-* `models/elna_plug_modified.scad` – The main OpenSCAD code performing precise modifications on the STL outline.
-* `stls/exports/elna_plug_modified_bottom.stl` – The ready-to-print bottom half of the plug.
-* `stls/exports/elna_plug_modified_top.stl` – The ready-to-print top half of the plug.
-* `renders/` – Rendered preview graphics from OpenSCAD.
-* `tools/` – Python scripts used for precise analysis of the STL mesh geometry.
+| File | What it is |
+|---|---|
+| `ELNA_SUPERMATIC_PLUG_ORIGINAL.stl` | unmodified original, input for the script |
+| `final_plug.scad` | the fix (OpenSCAD) |
+| `ELNA_SUPERMATIC_PLUG_naciecie_poprawione.stl` | output of `final_plug.scad` |
+| `ELNA_SUPERMATIC_PLUG_srodkowy_otwor_wyrownany.stl` | an earlier export with the middle hole aligned; its source script was not preserved |
+| `PODGLAD_*.png` | preview renders |
 
-## 3D Printing Requirements (Wymagania dotyczące druku 3D)
-Due to the fact that this element has direct contact with live wires (230V) and brass elements that can heat up:
-- **DO NOT USE PLA** (too low softening temperature).
-- **Recommended materials:** PETG, ABS, ASA, PC-Blend.
-- High infill (e.g., 50-100% with 4 perimeters) should be used so the plug does not break under cable pressure.
+Render with a recent OpenSCAD build that has the Manifold backend:
 
-## Contact Elements Assembly (Montaż Elementów Stykowych)
-The models serve solely as housings. To build the plug, you must use brass tubes or universal 2.8mm / 4.8mm female spade connectors crimped on the stripped wires.
-After inserting the crimped wires into the appropriate print channels, both halves of the housing should be screwed together with an M3 screw.
+```
+openscad --backend=manifold -o out.stl final_plug.scad
+```
 
-## License (Licencja)
-The project is released under the **GPL-3.0** license, in accordance with open-source principles for derivative works. See the [LICENSE](LICENSE) file.
+Expected result: 1040 vertices, 2084 facets, genus 2, status NoError. OpenSCAD repairs the original
+mesh on import (it is not manifold), so check the result in your slicer before printing.
+
+Not verified on a real part: whether the wider middle notch in the original is a defect or
+intentional. Measure your machine's socket first.
+
+## 2. Foot controller plug (Elna elnasuper)
+
+Base model: [Thingiverse 6924689](https://www.thingiverse.com/thing:6924689) by sfiveo13
+(`elnaplug-elnasuperv1.5.stl`, plus the connector cover `elna_elnasuper_connector_cover.stl`).
+The original has three 3.0 × 8.0 mm slots.
+
+Variants with resized slots, each with its OpenSCAD source next to the STL:
+
+| File | Slot size |
+|---|---|
+| `elnaplug-elnasuperv1.5_6.6x3.2mm.stl` | 3.2 × 6.6 mm |
+| `elnaplug-elnasuperv1.5_6.6x3.3mm.stl` | 3.3 × 6.6 mm |
+| `elnaplug-elnasuperv1.5_6.6x3.4mm.stl` | 3.4 × 6.6 mm |
+| `elnaplug-elnasuperv1.5_6.6x3.5mm.stl` | 3.5 × 6.6 mm |
+| `elnaplug-elnasuperv1.5_plus0.5mm.stl` | original slots enlarged by 0.5 mm (`elna_0_5mm.scad`) |
+| `elnaplug-elnasuperv1.5_plus1.0mm.stl` | original slots enlarged by 1.0 mm (`elna_1_0mm.scad`) |
+| `elna_plug_parametric_project75.stl` | original slots enlarged by 0.75 mm |
+
+`elna_plug_parametric_project.scad` is the general version: set `extra` to grow or shrink the
+original slots by any amount.
+
+## Attribution and licence
+
+Both base models were published on Thingiverse under Creative Commons Attribution-ShareAlike:
+
+- Elna Sewing Machine Power Plug by **bamckin** — https://www.thingiverse.com/thing:7199180
+- Elna elnasuper foot controller connector by **sfiveo13** — https://www.thingiverse.com/thing:6924689
+
+Their original licence notes and descriptions are in `references/`. The modified models and the
+scripts in this repository are shared under the same Attribution-ShareAlike terms; see `LICENSE.md`.
+
+An earlier, different modification of the power plug (three vertical pins) used to live in this
+repository; it remains in the commit history.

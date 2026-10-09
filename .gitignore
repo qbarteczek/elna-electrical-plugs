@@ -1,9 +1,0 @@
-# Ignoruj pliki tymczasowe OpenSCAD w głównym katalogu
-/*.stl
-*.obj
-*.gcode
-.openscad_history
-*.zip
-
-# NIE ignoruj STLi w katalogu stls/ (są częścią projektu)
-!stls/**/*.stl
